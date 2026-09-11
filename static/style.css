@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --violet-600: #7c3aed;
+  --violet-700: #6d28d9;
+  --indigo-500: #6366f1;
+  --ink: #1e1b4b;
+  --muted: #6b7280;
+  --error: #dc2626;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #c026d3 100%);
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 920px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 28px;
+  box-shadow: 0 25px 60px -15px rgba(30, 27, 75, 0.45);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+}
+
+@media (max-width: 720px) {
+  .card {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel {
+  padding: 48px 40px;
+}
+
+.panel-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ede9fe;
+  color: var(--violet-700);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  width: fit-content;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 8px;
+  line-height: 1.25;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 15px;
+  margin: 0 0 28px;
+  line-height: 1.5;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+textarea {
+  font-family: inherit;
+  font-size: 15px;
+  resize: vertical;
+  min-height: 96px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1.5px solid #e5e7eb;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  color: var(--ink);
+}
+
+textarea:focus {
+  border-color: var(--indigo-500);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+.error-msg {
+  color: var(--error);
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: -2px;
+}
+
+button {
+  margin-top: 12px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--indigo-500), var(--violet-600));
+  border: none;
+  border-radius: 14px;
+  padding: 14px 20px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 10px 20px -8px rgba(109, 40, 217, 0.6);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 24px -8px rgba(109, 40, 217, 0.7);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.panel-right {
+  background: linear-gradient(160deg, #f5f3ff 0%, #ede9fe 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+}
+
+.qr-placeholder {
+  text-align: center;
+  color: #9ca3af;
+}
+
+.qr-placeholder svg {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 12px;
+  opacity: 0.6;
+}
+
+.qr-placeholder p {
+  font-size: 13px;
+  margin: 0;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.qr-result {
+  text-align: center;
+  animation: pop-in 0.35s ease;
+}
+
+.qr-result img {
+  width: 220px;
+  height: 220px;
+  background: #fff;
+  padding: 16px;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px -10px rgba(30, 27, 75, 0.25);
+}
+
+.qr-result .caption {
+  margin: 16px 0 4px;
+  font-size: 13px;
+  color: var(--muted);
+  word-break: break-all;
+  max-width: 240px;
+}
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--violet-700);
+  background: #ffffff;
+  border: 1.5px solid #ddd6fe;
+  padding: 10px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.download-btn:hover {
+  background: #f5f3ff;
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+}

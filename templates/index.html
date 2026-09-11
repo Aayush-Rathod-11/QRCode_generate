@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Text to QR Code Generator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="wrapper">
+    <div class="card">
+
+      <!-- Left panel: input form -->
+      <div class="panel panel-left">
+        <span class="badge">✨ Free &amp; instant</span>
+        <h1>Turn any text into a QR code</h1>
+        <p class="subtitle">
+          Paste a link, message, or plain text below and generate a
+          scannable QR code you can download in one click.
+        </p>
+
+        <form method="post">
+          <label for="text">Your text or URL</label>
+          <textarea
+            id="text"
+            name="text"
+            placeholder="e.g. https://example.com or any message..."
+            required
+          >{{ text_value }}</textarea>
+
+          {% if error %}
+            <span class="error-msg">{{ error }}</span>
+          {% endif %}
+
+          <button type="submit">Generate QR Code</button>
+        </form>
+      </div>
+
+      <!-- Right panel: QR preview -->
+      <div class="panel panel-right">
+        {% if qr_image %}
+          <div class="qr-result">
+            <img src="data:image/png;base64,{{ qr_image }}" alt="Generated QR code" />
+            <p class="caption">{{ text_value }}</p>
+            <a
+              class="download-btn"
+              href="data:image/png;base64,{{ qr_image }}"
+              download="qrcode.png"
+            >
+              ⬇ Download PNG
+            </a>
+          </div>
+        {% else %}
+          <div class="qr-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 3h7v7H3V3zm2 2v3h3V5H5zm-2 9h7v7H3v-7zm2 2v3h3v-3H5zm9-13h7v7h-7V3zm2 2v3h3V5h-3zM14 14h3v3h-3v-3zm4 0h3v3h-3v-3zm-4 4h3v3h-3v-3zm4 0h3v3h-3v-3z" fill="currentColor"/>
+            </svg>
+            <p>Your generated QR code will appear here</p>
+          </div>
+        {% endif %}
+      </div>
+
+    </div>
+    <footer>Made with Flask + qrcode</footer>
+  </div>
+</body>
+</html>
